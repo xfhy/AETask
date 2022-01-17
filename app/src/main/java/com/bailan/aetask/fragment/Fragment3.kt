@@ -1,10 +1,8 @@
 package com.bailan.aetask.fragment
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
-import android.view.animation.LinearInterpolator
 import androidx.lifecycle.lifecycleScope
 import com.bailan.aetask.R
+import com.bailan.aetask.util.createRotationAnimator
 import kotlinx.android.synthetic.main.fragment_three.*
 import kotlinx.coroutines.delay
 
@@ -22,11 +20,7 @@ class Fragment3 : BaseFragment() {
             delay(200)
             ivCenter.animate().setDuration(100).rotationBy(180f).start()
             delay(600)
-            val animator = ObjectAnimator.ofFloat(ivCenter, "rotation", 0f, 180f, 360f)
-            animator.duration = 300
-            animator.interpolator = LinearInterpolator()
-            animator.repeatCount = ValueAnimator.INFINITE
-            animator.repeatMode = ValueAnimator.RESTART
+            val animator = ivCenter.createRotationAnimator()
             animator.start()
             delay(1000)
             animator.cancel()
