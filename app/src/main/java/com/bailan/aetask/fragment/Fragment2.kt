@@ -1,14 +1,8 @@
 package com.bailan.aetask.fragment
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.bailan.aetask.R
-import com.bailan.aetask.util.log
-import kotlinx.android.synthetic.main.fragment_two.*
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * @author : xfhy
@@ -21,6 +15,8 @@ class Fragment2 : BaseFragment() {
 
     override fun startAnimate() {
         lifecycleScope.launchWhenResumed {
+            delay(500)
+            animateComplete()
         }
     }
 }

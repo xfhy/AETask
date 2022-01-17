@@ -1,10 +1,9 @@
 package com.bailan.aetask
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.bailan.aetask.fragment.Fragment1
-import com.bailan.aetask.util.log
+import androidx.appcompat.app.AppCompatActivity
+import com.bailan.aetask.fragment.Fragment2
 import com.blankj.utilcode.util.BarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,7 +53,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun test() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fl_container, Fragment1())
+//        fragmentTransaction.replace(R.id.fl_container, Fragment1())
+        fragmentTransaction.replace(R.id.fl_container, Fragment2())
         fragmentTransaction.commit()
     }
 }
