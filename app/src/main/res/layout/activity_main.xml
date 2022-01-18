@@ -14,4 +14,11 @@
         android:layout_gravity="center"
         android:text="开始摆烂" />
 
+    <Button
+        android:id="@+id/btnRestart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="重新开始"/>
+
 </FrameLayout>

@@ -6,8 +6,9 @@ import androidx.lifecycle.lifecycleScope
 import com.bailan.aetask.R
 import com.bailan.aetask.util.createOneRandomNumber
 import com.bailan.aetask.util.log
+import com.bailan.aetask.util.screenHeight
+import com.bailan.aetask.util.screenWidth
 import com.bailan.aetask.view.FirecrackersView
-import com.blankj.utilcode.util.ScreenUtils
 import kotlinx.android.synthetic.main.fragment_five.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -19,13 +20,6 @@ import kotlinx.coroutines.delay
  * Description : 场景5: 鞭炮随机出现在屏幕中,高度逐渐减小到0
  */
 class Fragment5 : BaseFragment() {
-
-    private val mScreenHeight by lazy {
-        ScreenUtils.getScreenHeight()
-    }
-    private val mScreenWidth by lazy {
-        ScreenUtils.getScreenWidth()
-    }
 
     override fun getLayoutResId() = R.layout.fragment_five
 
@@ -55,8 +49,8 @@ class Fragment5 : BaseFragment() {
     private fun createSomeFirecrackers(whPair: Pair<Int, Int>): List<Pair<Int, Int>> {
         val coordinateList = mutableListOf<Pair<Int, Int>>()
 
-        val rangeMaxX = mScreenWidth - whPair.first
-        val rangeMaxY = mScreenHeight - whPair.second
+        val rangeMaxX = screenWidth - whPair.first
+        val rangeMaxY = screenHeight - whPair.second
 
         for (i in 0..30) {
             val x = createOneRandomNumber(rangeMaxX)

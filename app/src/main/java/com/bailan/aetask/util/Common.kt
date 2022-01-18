@@ -9,6 +9,8 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.blankj.utilcode.util.ScreenUtils
+import kotlinx.coroutines.CancellableContinuation
 import kotlin.random.Random
 
 
@@ -41,3 +43,18 @@ fun View.createRotationAnimator(myDuration: Long = 300L) = ObjectAnimator.ofFloa
 }
 
 fun createOneRandomNumber(rangeMax: Int) = Random.nextInt(rangeMax)
+
+val screenHeight by lazy {
+    ScreenUtils.getScreenHeight()
+}
+
+val screenWidth by lazy {
+    ScreenUtils.getScreenWidth()
+}
+
+//只在active时才resume,避免重复resume问题
+fun <T> CancellableContinuation<T>.activeResume(value: T) {
+    if (isActive) {
+        resumeWith(Result.success(value))
+    }
+}
