@@ -4,7 +4,11 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.Typeface
+import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
 import com.bailan.aetask.R
@@ -31,9 +35,6 @@ class Fragment8 : BaseFragment() {
     private val blessingViewWidth by lazy {
         screenWidth * 0.25f
     }
-    private val smallBlessingViewWidth by lazy {
-        screenWidth * 0.18f
-    }
 
     override fun getLayoutResId() = R.layout.fragment_eight
 
@@ -49,9 +50,83 @@ class Fragment8 : BaseFragment() {
             }
             val leftViews = leftDeferred.await()
             val rightViews = rightDeferred.await()
+
+            doLeftSmallAnimator()
+
+            doRightTextAnimator()
+
             doBlessingsLTRAnimator(leftViews)
             doBlessingsRTLAnimator(rightViews)
+
+            doCenterAnimator()
+
+            doCenterTextAnimator()
+
         }
+    }
+
+    private fun doCenterTextAnimator() {
+        val array = arrayListOf<TextView>(
+            tvCenterText1, tvCenterText2, tvCenterText3, tvCenterText4, tvCenterText5, tvCenterText6,
+            tvCenterText7
+        )
+        flow1.visibility = View.VISIBLE
+        flow2.visibility = View.VISIBLE
+        activity?.assets?.let { assetManager ->
+            val typeface = Typeface.createFromAsset(assetManager, "华文行楷.ttf")
+            array.forEach {
+                it.typeface = typeface
+            }
+        }
+
+        array.forEachIndexed { index, textView ->
+            val scaleXAnimator = ObjectAnimator.ofFloat(textView, "scaleX", 1f, 3.2f, 1f)
+            val scaleYAnimator = ObjectAnimator.ofFloat(textView, "scaleY", 1f, 3.2f, 1f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.duration = 3600
+            animatorSet.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                }
+            })
+            animatorSet.play(scaleXAnimator).with(scaleYAnimator)
+            animatorSet.startDelay = index * animatorSet.duration
+            animatorSet.start()
+        }
+
+    }
+
+    private fun doRightTextAnimator() {
+        tvRightText.animate().translationX(-screenWidth.toFloat() - tvRightText.width).setInterpolator(LinearInterpolator())
+            .setDuration(12000).start()
+    }
+
+    private fun doLeftSmallAnimator() {
+        ivSmallBlessing.animate().translationX(screenWidth.toFloat() + ivSmallBlessing.width).setInterpolator(LinearInterpolator())
+            .setDuration(12000).start()
+    }
+
+    private suspend fun doCenterAnimator() = suspendCancellableCoroutine<Unit?> { continuation ->
+
+        val alphaAnimator = ObjectAnimator.ofFloat(ivCenterBlessing, "alpha", 0f, 1f)
+        alphaAnimator.duration = 400
+
+        val scaleXAnimator = ObjectAnimator.ofFloat(ivCenterBlessing, "scaleX", 1f, 2.2f)
+        val scaleYAnimator = ObjectAnimator.ofFloat(ivCenterBlessing, "scaleY", 1f, 2.2f)
+
+        scaleXAnimator.duration = 3600
+        scaleYAnimator.duration = 3600
+
+        val animatorSet = AnimatorSet()
+        animatorSet.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                super.onAnimationEnd(animation)
+                continuation.activeResume(null)
+            }
+        })
+        animatorSet.play(scaleXAnimator).with(scaleYAnimator).after(alphaAnimator)
+        animatorSet.start()
     }
 
     private fun createLeftBlessings(): List<Pair<Int, Int>> {
@@ -106,10 +181,11 @@ class Fragment8 : BaseFragment() {
         rightViews.forEachIndexed { index, imageView ->
             val animatorSet = AnimatorSet()
             val translationXAnimator = ObjectAnimator.ofFloat(imageView, "translationX", -screenWidth.toFloat())
-            translationXAnimator.duration = 2000
+            translationXAnimator.duration = (1500 + Random.nextInt(2000)).toLong()
             translationXAnimator.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
+                    imageView.animate().setDuration(400).alpha(0f).start()
                     if (index == rightViews.size - 1) {
                         continuation.activeResume(null)
                     }
@@ -127,7 +203,7 @@ class Fragment8 : BaseFragment() {
 
             val animatorSet = AnimatorSet()
             val translationXAnimator = ObjectAnimator.ofFloat(imageView, "translationX", screenWidth.toFloat())
-            translationXAnimator.duration = 2000
+            translationXAnimator.duration = (1500 + Random.nextInt(500)).toLong()
             translationXAnimator.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)

@@ -1,7 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clEight"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivSmallBlessing"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/blessing"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCenterBlessing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:src="@mipmap/blessing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:alpha="1" />
+
+    <TextView
+        android:id="@+id/tvRightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="过年啦\n过年啦"
+        android:textColor="#ff0000"
+        android:textSize="45dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glCenterLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/tvCenterText1"
+        style="@style/CenterTextStyle"
+        android:text="欢" />
+
+    <TextView
+        android:id="@+id/tvCenterText2"
+        style="@style/CenterTextStyle"
+        android:text="欢" />
+
+    <TextView
+        android:id="@+id/tvCenterText3"
+        style="@style/CenterTextStyle"
+        android:text="喜" />
+
+    <TextView
+        android:id="@+id/tvCenterText4"
+        style="@style/CenterTextStyle"
+        android:text="喜" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="tvCenterText1,tvCenterText2,tvCenterText3,tvCenterText4"
+        app:layout_constraintBottom_toTopOf="@id/glCenterLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCenterText5"
+        style="@style/CenterTextStyle"
+        android:text="过" />
+
+    <TextView
+        android:id="@+id/tvCenterText6"
+        style="@style/CenterTextStyle"
+        android:text="大" />
+
+    <TextView
+        android:id="@+id/tvCenterText7"
+        style="@style/CenterTextStyle"
+        android:text="年" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow2"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tvCenterText5,tvCenterText6,tvCenterText7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glCenterLine" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

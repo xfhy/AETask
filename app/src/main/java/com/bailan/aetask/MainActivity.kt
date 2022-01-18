@@ -67,13 +67,3 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
-/*
-* 设置字体
-* AssetManager mgr=getAssets();//得到AssetManager
-
-Typeface tf=Typeface.createFromAsset(mgr, "fonts/ttf.ttf");//根据路径得到Typeface
-
-tv=findViewById(R.id.textview);
-
-tv.setTypeface(tf);//设置字体
-* */
