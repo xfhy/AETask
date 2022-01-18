@@ -3,7 +3,7 @@ package com.bailan.aetask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bailan.aetask.fragment.Fragment6
+import com.bailan.aetask.fragment.Fragment7
 import com.blankj.utilcode.util.BarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
 //        fragmentTransaction.replace(R.id.fl_container, Fragment3())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment4())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment5())
-        fragmentTransaction.replace(R.id.fl_container, Fragment6())
+//        fragmentTransaction.replace(R.id.fl_container, Fragment6())
+        fragmentTransaction.replace(R.id.fl_container, Fragment7())
         fragmentTransaction.commit()
     }
 }

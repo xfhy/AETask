@@ -19,7 +19,10 @@ import kotlinx.coroutines.delay
  * Create time : 2022/1/17 12:04
  * Description : 场景5: 鞭炮随机出现在屏幕中,高度逐渐减小到0
  */
-class Fragment5 : BaseFragment() {
+open class Fragment5 : BaseFragment() {
+
+    open val viewCount
+        get() = 30
 
     override fun getLayoutResId() = R.layout.fragment_five
 
@@ -52,7 +55,7 @@ class Fragment5 : BaseFragment() {
         val rangeMaxX = screenWidth - whPair.first
         val rangeMaxY = screenHeight - whPair.second
 
-        for (i in 0..30) {
+        for (i in 0..viewCount) {
             val x = createOneRandomNumber(rangeMaxX)
             val y = createOneRandomNumber(rangeMaxY)
             coordinateList.add(Pair(x, y))
