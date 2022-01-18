@@ -3,7 +3,7 @@ package com.bailan.aetask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bailan.aetask.fragment.Fragment4
+import com.bailan.aetask.fragment.Fragment5
 import com.blankj.utilcode.util.BarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * 场景2: 2个福字,中间有一点重叠
  * 场景3: 先在中间展示一个福字,然后倒过来,然后开始顺时针旋转
  * 场景4: 左右2个福字,分别旋转,开始时间不同
- * 场景5: 鞭炮随机出现在屏幕中,高度之间减小到0
+ * 场景5: 鞭炮随机出现在屏幕中,高度逐渐减小到0
  * 场景6: 出现一个绘制的福字,从左到右,然后从右到左且旋转,然后又从右边慢慢移动到左边,移动到中间时逐渐放大,在中间变成本来的大小,从小变大.移动到左上角,然后移动到右下角
  * 场景7: 又开始:鞭炮随机出现在屏幕中,高度之间减小到0,时间稍微久点
  * 场景8: 屏幕左边随机出现一些福字,从左到右且旋转;随机出现右边也随机出现一些福字,从右到左且旋转;
@@ -56,7 +56,8 @@ class MainActivity : AppCompatActivity() {
 //        fragmentTransaction.replace(R.id.fl_container, Fragment1())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment2())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment3())
-        fragmentTransaction.replace(R.id.fl_container, Fragment4())
+//        fragmentTransaction.replace(R.id.fl_container, Fragment4())
+        fragmentTransaction.replace(R.id.fl_container, Fragment5())
         fragmentTransaction.commit()
     }
 }

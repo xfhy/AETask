@@ -8,20 +8,20 @@
         android:id="@+id/iv1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_fu"
+        android:src="@mipmap/blessing"
         android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/iv2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_fu" />
+        android:src="@mipmap/blessing" />
 
     <ImageView
         android:id="@+id/iv3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_fu"
+        android:src="@mipmap/blessing"
         android:visibility="invisible" />
 
     <androidx.constraintlayout.helper.widget.Flow

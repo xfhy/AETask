@@ -9,6 +9,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlin.random.Random
 
 
 fun Fragment.toast(str: String) {
@@ -38,3 +39,5 @@ fun View.createRotationAnimator(myDuration: Long = 300L) = ObjectAnimator.ofFloa
     repeatCount = ValueAnimator.INFINITE
     repeatMode = ValueAnimator.RESTART
 }
+
+fun createOneRandomNumber(rangeMax: Int) = Random.nextInt(rangeMax)
