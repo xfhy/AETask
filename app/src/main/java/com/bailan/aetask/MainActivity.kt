@@ -3,7 +3,7 @@ package com.bailan.aetask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bailan.aetask.fragment.Fragment7
+import com.bailan.aetask.fragment.Fragment8
 import com.blankj.utilcode.util.BarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * 场景5: 鞭炮随机出现在屏幕中,高度逐渐减小到0
  * 场景6: 出现一个绘制的福字,从左到右,然后从右到左且旋转,然后又从右边慢慢移动到左边,移动到中间时逐渐放大,在中间变成本来的大小,从小变大.移动到左上角,然后移动到右下角
  * 场景7: 又开始:鞭炮随机出现在屏幕中,高度之间减小到0,时间稍微久点
- * 场景8: 屏幕左边随机出现一些福字,从左到右且旋转;随机出现右边也随机出现一些福字,从右到左且旋转;
+ * 场景8: 屏幕左边随机出现一些福字,从左到右且旋转;右边也随机出现一些福字,从右到左且旋转;
  * 有一个小一些的福字,从左到右,没有旋转;其次,从屏幕右边出现2行文字:过年啦,从右往左慢慢移动;2行文字要移动到一半的时候,屏幕中间出现一个逐渐变大的福字,变大速度很慢;
  * 与此同时,屏幕中间出现2行文字,第一行:欢欢喜喜;第二行:过大年.这2行文字挨个变大,然后缩小为本身的大小,变大的同时透明度逐渐降低,变小之后透明度又变成1了.
  * 等2行文字都完成动画时,中间的福字变小,然后消失
@@ -62,7 +62,8 @@ class MainActivity : AppCompatActivity() {
 //        fragmentTransaction.replace(R.id.fl_container, Fragment4())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment5())
 //        fragmentTransaction.replace(R.id.fl_container, Fragment6())
-        fragmentTransaction.replace(R.id.fl_container, Fragment7())
+//        fragmentTransaction.replace(R.id.fl_container, Fragment7())
+        fragmentTransaction.replace(R.id.fl_container, Fragment8())
         fragmentTransaction.commit()
     }
 }
