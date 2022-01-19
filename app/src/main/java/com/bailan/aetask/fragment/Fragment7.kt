@@ -8,6 +8,6 @@ package com.bailan.aetask.fragment
 class Fragment7 : Fragment5() {
 
     override val viewCount: Int
-        get() = 45
+        get() = 26
 
 }

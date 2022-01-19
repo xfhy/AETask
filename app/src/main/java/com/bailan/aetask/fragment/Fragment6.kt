@@ -100,6 +100,8 @@ class Fragment6 : BaseFragment() {
                 animatorSet.start()
             }
 
+            animateComplete()
+
         }
     }
 }

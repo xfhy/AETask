@@ -3,7 +3,8 @@ package com.bailan.aetask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bailan.aetask.fragment.Fragment8
+import com.bailan.aetask.fragment.*
+import com.bailan.aetask.task.TaskManager
 import com.blankj.utilcode.util.BarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,9 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
  * 原作者视频: https://www.bilibili.com/video/BV1xL4y1E7nT
  *
  * 思路:
- * 1. 搞个Manager,管理Task
- * 2. 每个Task内部负责展示自己的Fragment,Task完成之后继续下一个Task的执行
- * 3. 责任链模式
+ * 1. 每个场景对应一个Fragment,切换场景就行
+ * 2. 搞个Manager,管理Fragment,一个接一个播放动画
  *
  * 开始之前:
  * 1. 搞到原作音频文件,当做背景音乐
@@ -47,23 +47,24 @@ class MainActivity : AppCompatActivity() {
         BarUtils.setStatusBarVisibility(this, false)
         btnStart.setOnClickListener {
             btnStart.visibility = View.GONE
-            test()
+            start()
         }
         btnRestart.setOnClickListener {
-            test()
+            start()
         }
     }
 
-    private fun test() {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.fl_container, Fragment1())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment2())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment3())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment4())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment5())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment6())
-//        fragmentTransaction.replace(R.id.fl_container, Fragment7())
-        fragmentTransaction.replace(R.id.fl_container, Fragment8())
-        fragmentTransaction.commit()
+    private fun start() {
+        val list = mutableListOf<BaseFragment>()
+        list.add(Fragment1())
+        list.add(Fragment2())
+        list.add(Fragment3())
+        list.add(Fragment4())
+        list.add(Fragment5())
+        list.add(Fragment6())
+        list.add(Fragment7())
+        list.add(Fragment8())
+        val taskManager = TaskManager(this, R.id.fl_container, list)
+        taskManager.startRotten()
     }
 }

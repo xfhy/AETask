@@ -22,7 +22,7 @@ import kotlinx.coroutines.delay
 open class Fragment5 : BaseFragment() {
 
     open val viewCount
-        get() = 30
+        get() = 15
 
     override fun getLayoutResId() = R.layout.fragment_five
 

@@ -84,7 +84,7 @@ class Fragment8 : BaseFragment() {
             val scaleYAnimator = ObjectAnimator.ofFloat(textView, "scaleY", 1f, 3.2f, 1f)
 
             val animatorSet = AnimatorSet()
-            animatorSet.duration = 3600
+            animatorSet.duration = 2600
             animatorSet.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
